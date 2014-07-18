@@ -12,17 +12,17 @@ cp -r web/resource ${WEBDIR}/
 # You can start apache inside the container using
 # apache2ctl -D FOREGROUND
 
-docker.io run --name='inasafe-realtime-apache' \
-	-v $WEBDIR:/var/www \
-	-p 8080:80 \
-        --entrypoint=/bin/bash \
-	-i -t AIFDR/apache-realtime -i
+#docker.io run --name='inasafe-realtime-apache' \
+#	-v $WEBDIR:/var/www \
+#	-p 8080:80 \
+#        --entrypoint=/bin/bash \
+#	-i -t AIFDR/apache-realtime -i
 
 # Once testing is done comment the above and use
 # this one rather.
-#docker.io run --name='inasafe-realtime-apache' \
-#	-v $WEBDIR:/web \
-#	-p 8080:80 \
-#	-d -t AIFDR/apache-realtime
+docker.io run --name='inasafe-realtime-apache' \
+	-v $WEBDIR:/var/www \
+        -p 8080:80 \
+	-d -t AIFDR/apache-realtime
 
 
