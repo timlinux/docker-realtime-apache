@@ -10,3 +10,6 @@ docker.io run --name='inasafe-realtime-apache' \
 	-v $WEBDIR:/web \
 	-p 8080:80 \
 	-d -t AIFDR/apache-realtime
+
+cp web/index.html ${WEBDIR}/
+cp -r web/resource ${WEBDIR}/
