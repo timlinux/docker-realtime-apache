@@ -6,7 +6,12 @@ RUN  export DEBIAN_FRONTEND=noninteractive
 ENV  DEBIAN_FRONTEND noninteractive
 RUN  dpkg-divert --local --rename --add /sbin/initctl
 
-RUN apt-get install -y apache2
+# Use local cached debs from host (saves your bandwidth!)
+# Change ip below to that of your apt-cacher-ng host
+# Or comment this line out if you do not wish to use caching
+ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
+
+RUN apt-get install -y apache2 vim
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
