@@ -1,6 +1,7 @@
 #!/bin/bash
 
 WEBDIR=/home/realtime/web
+APACHE_IMAGE=docker-realtime-apache
 
 docker.io kill inasafe-realtime-apache
 docker.io rm inasafe-realtime-apache
@@ -23,6 +24,6 @@ cp -r web/resource ${WEBDIR}/
 docker.io run --name='inasafe-realtime-apache' \
 	-v $WEBDIR:/var/www \
         -p 8080:80 \
-	-d -t AIFDR/apache-realtime
+	-d -t AIFDR/${APACHE_IMAGE}
 
 
