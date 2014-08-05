@@ -3,27 +3,12 @@
 WEBDIR=/home/realtime/web
 APACHE_IMAGE=docker-realtime-apache
 
-docker.io kill inasafe-realtime-apache
-docker.io rm inasafe-realtime-apache
+docker.io kill ${APACHE_IMAGE}
+docker.io rm ${APACHE_IMAGE}
 
-mkdir -p $WEBDIR
-cp web/index.html ${WEBDIR}/
-cp -r web/resource ${WEBDIR}/
-# Uncomment to run with a bash prompt for testing
-# You can start apache inside the container using
-# apache2ctl -D FOREGROUND
+mkdir -p ${WEBDIR}
 
-#docker.io run --name='inasafe-realtime-apache' \
-#	-v $WEBDIR:/var/www \
-#	-p 8080:80 \
-#        --entrypoint=/bin/bash \
-#	-i -t AIFDR/apache-realtime -i
-
-# Once testing is done comment the above and use
-# this one rather.
-docker.io run --name='inasafe-realtime-apache' \
-	-v $WEBDIR:/var/www \
-        -p 8080:80 \
-	-d -t AIFDR/${APACHE_IMAGE}
-
-
+docker.io run --name="${APACHE_IMAGE}" \
+	-v ${WEBDIR}:/var/www \
+    -p 8080:80 \
+	-d -t aifdr/${APACHE_IMAGE}
