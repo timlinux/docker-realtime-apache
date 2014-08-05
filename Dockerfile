@@ -21,7 +21,7 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /tmp
 ENV APACHE_PID_FILE apache.lock
 
-ADD web/quake-apache.conf /etc/apache2/sites-available/000-default.conf
+ADD apache.conf /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
 
